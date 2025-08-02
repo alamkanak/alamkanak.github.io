@@ -8,5 +8,7 @@ It should work nicely for both desktop and mobile, light and dark modes.
 Implement components wherever you think it may be reused in other pages.
 Use nuxt content queryCollectionNavigation, queryCollectionItemSurroundings, queryCollectionSearchSections, queryCollection, etc. to fetch the projects. Do not implement any server side API. Use #Context7 to gather docs on nuxt content.
 For writing any piece of code, first use #context7 to fetch relevant documentations and then write the code.
-Note that in the project md files, there are headers, images, links, and other markdown elements. Also, there are some custom components that uses ":::" syntax. For example, `tip`, `youtube` etc. They should be rendered properly with alert, video etc. components.
+Note that in the project md files, there are headers, images, links, bullet points, and other markdown elements. Also, there are some custom components that uses ":::" syntax. For example, `tip`, `youtube` etc. They should be rendered properly with alert, video etc. components.
+The links section in the header of the md files contain CTA actions.
+The info section in the header of the md files contain key value pairs for the project attributes and my relationship with the project.
 Now implement the project details page.
