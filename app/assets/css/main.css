@@ -269,6 +269,17 @@ code, pre {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes linear-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes linear-filter-highlight {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .linear-animate-fade-in {
   animation: linear-fade-in 0.2s ease-out;
 }
@@ -276,3 +287,69 @@ code, pre {
 .linear-animate-slide-up {
   animation: linear-slide-up 0.3s ease-out;
 }
+
+.linear-animate-scale-in {
+  animation: linear-scale-in 0.2s ease-out;
+}
+
+.linear-animate-filter-highlight {
+  animation: linear-filter-highlight 0.3s ease-out;
+}
+
+/* Smooth grid transitions */
+.linear-grid-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading state animations */
+@keyframes linear-skeleton {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.linear-skeleton {
+  animation: linear-skeleton 1.5s ease-in-out infinite;
+}
+
+/* Filter button hover states */
+.linear-filter-button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.linear-filter-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.linear-filter-button:active {
+  transform: translateY(0);
+  transition: transform 0.1s;
+}
+
+/* Search input enhancements */
+.linear-search-input {
+  transition: all 0.2s ease-out;
+}
+
+.linear-search-input:focus-within {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-500), 0.1);
+}
+
+/* Card hover effects */
+.linear-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.linear-card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Staggered animations for grid items */
+.linear-stagger-1 { animation-delay: 0ms; }
+.linear-stagger-2 { animation-delay: 80ms; }
+.linear-stagger-3 { animation-delay: 160ms; }
+.linear-stagger-4 { animation-delay: 240ms; }
+.linear-stagger-5 { animation-delay: 320ms; }
+.linear-stagger-6 { animation-delay: 400ms; }
