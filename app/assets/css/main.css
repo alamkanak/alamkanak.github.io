@@ -258,6 +258,15 @@ code, pre {
   font-family: var(--font-mono);
 }
 
+/* Line clamp utility */
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
 /* Linear.app inspired animations */
 @keyframes linear-fade-in {
   from { opacity: 0; transform: translateY(8px); }

@@ -1,4 +1,4 @@
-# Linear.app Inspired Theme for Nuxt 3
+# Linear.app Inspired Theme for Nuxt 4
 
 This theme implements a comprehensive design system inspired by Linear.app's beautiful and modern interface. It provides a complete set of design tokens, utility classes, and components that work seamlessly in both light and dark modes.
 

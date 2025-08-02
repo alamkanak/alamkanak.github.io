@@ -15,7 +15,7 @@
             "(?:'|\"|`)([^']*)(?:'|\"|`)"
         ]
     ],
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
     },
@@ -42,5 +42,5 @@
         "json",
         "jsonc"
     ],
-    "chat.promptFiles": true
+    "chat.promptFiles": true,
 }
