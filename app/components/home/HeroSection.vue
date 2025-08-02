@@ -8,7 +8,7 @@
     <h1 class="text-3xl lg:text-4xl font-bold text-highlighted">
       Hi! I'm Raquib Ul Alam
     </h1>
-    <p class="text-lg text-default leading-relaxed">
+    <p class="text-lg text-default leading-relaxed text-center">
       Professionally, I work as a Senior Android Engineer with a specialization in on-device deployment of machine
       learning and signal processing models. My Android experiences span over ten years. Academically, my research
       focusses on medical image and signal processing towards the development of machine learning and statistical

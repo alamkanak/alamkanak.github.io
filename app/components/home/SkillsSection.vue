@@ -39,7 +39,7 @@ const skills: Skill[] = [
   },
   {
     name: 'Computer vision',
-    description: 'In several of my projects, I employed OpenCV and traditional computer vision techniques in medical images'
+    description: 'In my projects, I employed OpenCV and traditional computer vision techniques in medical images'
   },
   {
     name: 'Tensorflow',

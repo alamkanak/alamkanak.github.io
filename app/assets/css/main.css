@@ -183,7 +183,7 @@
   --ui-bg-accented: var(--color-neutral-700);
   --ui-bg-inverted: var(--color-white);
   
-  --ui-border: var(--color-neutral-800);
+  --ui-border: var(--color-neutral-600);
   --ui-border-muted: var(--color-neutral-800);
   --ui-border-accented: var(--color-neutral-700);
   --ui-border-inverted: var(--color-white);
@@ -256,15 +256,6 @@ html {
 
 code, pre {
   font-family: var(--font-mono);
-}
-
-/* Line clamp utility */
-.line-clamp-3 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
 }
 
 /* Linear.app inspired animations */

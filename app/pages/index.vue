@@ -1,6 +1,6 @@
 <template>
   <div class="bg-default min-h-screen">
-    <div class="container mx-auto px-4 py-8 lg:py-12">
+    <div class="container mx-auto px-4 py-8 lg:py-12 max-w-7xl">
       <!-- Hero Section -->
       <HomeHeroSection />
       
