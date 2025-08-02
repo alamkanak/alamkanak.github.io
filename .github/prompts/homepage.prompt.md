@@ -4,6 +4,8 @@ mode: agent
 This is a portfolio website styled same as linear.app design. This will be hosted on GitHub Pages.
 Implement the home page according the following specifications. Use #Context7 to gather docs on nuxt 3, nuxt content, nuxt ui, etc. on how to implement it.
 Implement components wherever you think it may be reused in other pages.
+Use the current theme (inspired by linear.app) for the whole site. The theme is defined in assets/css/main.css, nuxt.config.ts, and app/app.config.ts file.
+If necessary, update the theme instead of hardcoding styles in components.
 The home page of the website should contain the following sections:
 
 # Sections
@@ -45,3 +47,5 @@ Strive to produce meaningful and digestable visualization of big data
 Projects section should contain a list of projects dynamically generated from nuxt content folder in the repository.
 Only show thumbnail, title, description, and tags provided in the project markdown files.
 Clicking on a project should navigate to the project page. Use nuxt content queryCollectionNavigation, queryCollectionItemSurroundings, queryCollectionSearchSections, queryCollection, etc. to fetch the projects. Do not implement any server side API. Use #Context7 to gather docs on nuxt content.
+
+Now implement the home page.
