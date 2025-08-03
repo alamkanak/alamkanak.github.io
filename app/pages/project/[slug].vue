@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+const router = useRouter()
 const slug = route.params.slug as string
 
 const { data } = await useAsyncData(route.path, () => Promise.all([
@@ -28,6 +29,17 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+// Back navigation function that preserves scroll position
+const goBack = () => {
+  // Check if there's a previous page in history
+  if (window.history.length > 1) {
+    router.back()
+  } else {
+    // Fallback to home page if no history
+    router.push('/')
+  }
+}
+
 // const formattedDate = computed(() => {
 //   if (!page.value) return ''
 //   return new Intl.DateTimeFormat('en-US', {
@@ -44,11 +56,11 @@ useSeoMeta({
       <!-- Back Navigation -->
       <div class="mb-8">
         <UButton 
-          to="/" 
           color="neutral" 
           variant="ghost" 
           icon="mingcute:arrow-left-fill"
-          class="hover:bg-muted transition-colors"
+          class="hover:bg-muted transition-colors cursor-pointer"
+          @click="goBack"
         >
           Back to Portfolio
         </UButton>
