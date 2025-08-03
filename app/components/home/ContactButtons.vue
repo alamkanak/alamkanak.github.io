@@ -2,7 +2,7 @@
   <section class="mb-12 lg:mb-16">
     <CommonSectionHeader title="Contact" />
     
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap gap-3 justify-center">
       <UButton
         v-for="contact in contacts"
         :key="contact.label"

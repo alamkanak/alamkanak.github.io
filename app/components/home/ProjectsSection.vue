@@ -33,10 +33,34 @@ const { data: projects, pending } = await useAsyncData('projects', () => {
     .all()
 })
 
-// Filter state
-const activeFilter = ref<string | null>(null)
+// Router for URL management
+const route = useRoute()
 
-// Compute unique tags from all projects
+// Initialize filter state from URL query parameter using useState for SSR compatibility
+const activeFilter = useState<string | null>('projects-active-filter', () => {
+  // Only access route.query on client side to prevent hydration mismatch
+  if (import.meta.client) {
+    return (route.query.tag as string) || null
+  }
+  return null
+})
+
+// Sync activeFilter with URL query on client-side after hydration
+onMounted(() => {
+  // Initialize from URL on client side
+  activeFilter.value = (route.query.tag as string) || null
+})
+
+// Define custom order for tags
+const tagOrder = [
+  'Machine Learning',
+  'Android Development',
+  'Web Development',
+  'UX Design',
+  'Drawing'
+]
+
+// Compute unique tags from all projects with custom ordering
 const allTags = computed(() => {
   if (!projects.value) return []
   
@@ -47,7 +71,27 @@ const allTags = computed(() => {
     }
   })
   
-  return Array.from(tagSet).sort()
+  const availableTags = Array.from(tagSet)
+  
+  // Sort tags based on custom order, putting ordered tags first
+  return availableTags.sort((a, b) => {
+    const aIndex = tagOrder.indexOf(a)
+    const bIndex = tagOrder.indexOf(b)
+    
+    // If both tags are in the custom order, sort by their position
+    if (aIndex !== -1 && bIndex !== -1) {
+      return aIndex - bIndex
+    }
+    
+    // If only 'a' is in custom order, it comes first
+    if (aIndex !== -1) return -1
+    
+    // If only 'b' is in custom order, it comes first
+    if (bIndex !== -1) return 1
+    
+    // If neither is in custom order, sort alphabetically
+    return a.localeCompare(b)
+  })
 })
 
 // Compute filters with counts (dynamic based on current search)
@@ -75,10 +119,6 @@ const filters = computed(() => {
       'Machine Learning': 'carbon:machine-learning-model',
       'UX Design': 'mdi:art',
       'Drawing': 'carbon:draw',
-      'iOS Development': 'logos:apple',
-      'Mobile Development': 'carbon:mobile',
-      'AI': 'carbon:ai-results',
-      'Data Science': 'carbon:data-analytics'
     }
     
     return {
@@ -108,8 +148,46 @@ const filteredProjects = computed(() => {
   return filtered
 })
 
-// Handle filter changes
-const handleFilterChange = (filterValue: string | null) => {
+// Handle filter changes and update URL
+const handleFilterChange = async (filterValue: string | null) => {
   activeFilter.value = filterValue
+  
+  // Update URL query parameter using navigateTo for better SSR compatibility
+  const query = { ...route.query }
+  
+  if (filterValue) {
+    query.tag = filterValue
+  } else {
+    delete query.tag
+  }
+  
+  // Update the URL without triggering a page reload
+  await navigateTo({ 
+    path: route.path, 
+    query 
+  }, { replace: true })
 }
+
+// Watch for URL changes (browser back/forward navigation)
+watch(
+  () => route.query.tag,
+  (newTag) => {
+    activeFilter.value = (newTag as string) || null
+  }
+)
+
+// Validate that the initial tag from URL exists in available tags
+watchEffect(() => {
+  if (activeFilter.value && allTags.value.length > 0) {
+    if (!allTags.value.includes(activeFilter.value)) {
+      // If the tag from URL doesn't exist, reset to null and update URL
+      activeFilter.value = null
+      if (import.meta.client) {
+        const query = { ...route.query }
+        delete query.tag
+        navigateTo({ path: route.path, query }, { replace: true })
+      }
+    }
+  }
+})
 </script>
