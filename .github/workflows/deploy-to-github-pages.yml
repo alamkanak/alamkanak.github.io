@@ -35,6 +35,7 @@ jobs:
         run: yarn generate
         env:
           NODE_ENV: production
+          NITRO_PRESET: github-pages
 
       - name: Checkout GitHub Pages repository
         uses: actions/checkout@v4

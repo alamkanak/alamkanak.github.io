@@ -12,6 +12,19 @@ export default defineNuxtConfig({
     '@nuxt/icon'
   ],
   css: ['~/assets/css/main.css'],
+  image: {
+    // Configure for static site generation
+    provider: 'ipxStatic',
+    presets: {
+      avatar: {
+        modifiers: {
+          format: 'webp',
+          width: 300,
+          height: 300
+        }
+      }
+    }
+  },
   ui: {
     theme: {
       colors: [
@@ -38,6 +51,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     // Configure for static site generation and GitHub Pages
+    preset: 'github-pages',
     prerender: {
       routes: ['/'],
       crawlLinks: true
