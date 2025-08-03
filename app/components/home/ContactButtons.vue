@@ -12,7 +12,6 @@
         variant="outline"
         color="neutral"
         size="md"
-        class="linear-button-secondary"
       >
         <template #leading>
           <Icon :name="contact.icon" size="1.2em" />
