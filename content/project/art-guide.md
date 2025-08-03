@@ -9,7 +9,7 @@ info: [{key: 'Role', value: 'Creator and Lead Software Engineer'}, {key: 'Employ
 date: 2021-09-01
 ---
 ![Art Guide](/art-guide.png)
-
+<br/>
 Easy drawing tutorials for beginners. Learn how to draw using animations and voice guide.
 
 #### Art tutorials

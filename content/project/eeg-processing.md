@@ -9,5 +9,5 @@ info: [{key: 'DOI', value: '10.3390/s20216285'}, {key: 'Date published', value: 
 date: 2020-01-01
 ---
 ![An image](/eeg.png)
-
+<br/>
 As a part of my postgraduate Masters thesis, I developed pipelines to test out parameters within EEG preprocessing methods. The preprocessing methods resulted in novel features which were used for Machine Learning classification. A scientific paper is coming along soon.

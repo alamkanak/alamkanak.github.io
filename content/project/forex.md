@@ -9,7 +9,7 @@ info: [{key: 'Role', value: 'Freelance Software Engineer'}, {key: 'Employment', 
 date: 2018-05-01
 ---
 ![An image](/forex.png)
-
+<br/>
 ForexAchievers Signals provide you with currency trading alerts and notifications direct to your mobile device.
 
 The app provide the most accurate and precise Forex trading signals that you can take to take your trading to the next level.

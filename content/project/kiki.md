@@ -12,12 +12,8 @@ date: 2022-01-01
 ---
 ![An image](/zoetic-kiki.png)
 
----
-
 ## Introduction
 Kiki is an advanced Android robot that utilizes cutting-edge technologies such as Deep Learning and Computer Vision. Designed to adapt and evolve with its user, Kiki's personality changes and develops depending on how it is interacted with. Equipped with the ability to recognize and respond to emotions, Kiki forms a unique relationship with its user, always striving to bring joy and companionship.
-
----
 
 ## Responsibilities:
 - Leading and mentoring a team of android and machine learning engineers to design and develop cutting-edge technology for the Kiki robot.
@@ -28,6 +24,5 @@ Kiki is an advanced Android robot that utilizes cutting-edge technologies such a
 - Crafting and implementing a robust architecture for the Android library and app, enabling efficient management of the Kiki robot via BLE.
 - Incorporating state-of-the-art deep learning models, such as Tensorflow, into the Android app to enhance the robot's capabilities.
 - Testing and validating the android codes through thorough unit testing to ensure optimal performance and user experience.
----
 
 ::youtube{src="https://www.youtube.com/embed/CreyjtMbOzg"}

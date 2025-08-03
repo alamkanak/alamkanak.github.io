@@ -28,13 +28,13 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-const formattedDate = computed(() => {
-  if (!page.value) return ''
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-  }).format(new Date(page.value.date))
-})
+// const formattedDate = computed(() => {
+//   if (!page.value) return ''
+//   return new Intl.DateTimeFormat('en-US', {
+//     year: 'numeric',
+//     month: 'long',
+//   }).format(new Date(page.value.date))
+// })
 
 </script>
 
@@ -59,10 +59,10 @@ const formattedDate = computed(() => {
         
         <!-- Title and Date -->
         <div class="space-y-4">
-          <div class="flex items-center gap-3 text-muted">
+          <!-- <div class="flex items-center gap-3 text-muted">
             <UIcon name="uil:calender" size="1.25em" />
             <span class="text-sm font-medium">{{ formattedDate }}</span>
-          </div>
+          </div> -->
           
           <h1 class="text-4xl lg:text-5xl font-bold text-highlighted leading-tight">
             {{ page.title }}

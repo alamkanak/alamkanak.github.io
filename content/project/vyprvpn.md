@@ -12,7 +12,7 @@ info: [{key: 'Role', value: 'Lead Software Engineer'}, {key: 'Employment', value
 date: 2019-12-01
 ---
 ![An image](/vyprvpn.png)
-
+<br/>
 VyprVPN is the app I worked on during my employement at Golden Frog GmbH. I was the lead software engineer in a team of 4 android engineers for over 4 years. My responsibilities included:
 - Research and continuously enhance secured VPN application for Android.
 - Implement features and fix bugs in VyprVPN for Android.

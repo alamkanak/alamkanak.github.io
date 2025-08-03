@@ -54,8 +54,8 @@ onMounted(() => {
 // Define custom order for tags
 const tagOrder = [
   'Machine Learning',
-  'Android Development',
   'Web Development',
+  'Android Development',
   'UX Design',
   'Drawing'
 ]

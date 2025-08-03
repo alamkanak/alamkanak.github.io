@@ -9,5 +9,5 @@ info: [{key: "DOI", value: "10.1109/ICEAST.2018.8434493"}, {key: 'Role', value: 
 date: 2018-01-01
 ---
 ![An image](/gesture.png)
-
+<br/>
 This is a project for recognizing hand gestures using EMG signals recorded from hands. Deep learning models were developed that can classify EMG signals. The outcome of the work has been published in an [IEEE conference](https://ieeexplore.ieee.org/document/8434493).

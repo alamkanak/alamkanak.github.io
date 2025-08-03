@@ -21,7 +21,7 @@ The home page of the website should contain the following sections:
 
 ## Skills
 Machine Learning
-4 years experience
+9 years experience
 
 ### Agentic LLM, RAG
 Have worked with various agentic LLMs and RAG systems in multiple projects

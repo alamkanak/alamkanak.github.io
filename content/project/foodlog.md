@@ -9,5 +9,5 @@ info: [{key: 'Role', value: 'Freelance Software Engineer'}, {key: 'Employment', 
 date: 2018-02-01
 ---
 ![An image](/foodlog.png)
-
+<br/>
 Photo Food Logger is an app for irritable bowel syndrome (IBS) patients. This app will let you log your IBS symptoms such bloating, constipation, diarrhea, etc. You might be able to see a visual pattern in timeline or report view. And that might help you identify problem foods. The app generates nice looking timelines and calendars by putting the images in custom views. The timeline and the calendar can be reviewed by doctors to get an overall idea of the patients eating history.

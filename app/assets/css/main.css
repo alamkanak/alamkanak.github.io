@@ -150,8 +150,8 @@
   
   --ui-bg: var(--color-white);
   --ui-bg-muted: var(--color-neutral-50);
-  --ui-bg-elevated: var(--color-neutral-100);
-  --ui-bg-accented: var(--color-neutral-200);
+  --ui-bg-elevated: var(--color-neutral-200);
+  --ui-bg-accented: var(--color-neutral-300);
   --ui-bg-inverted: var(--color-neutral-900);
   
   --ui-border: var(--color-neutral-200);

@@ -9,5 +9,5 @@ info: [{key: 'Role', value: 'Web developer'}, {key: 'Employment', value: 'Self e
 date: 2017-01-01
 ---
 ![An image](/android-libs.png)
-
+<br/>
 **Android libraries and resources** is a website developed for Android developers. The website is hosted on Github and in it, developers can easily find Android libraries they are looking for. The site supports searching by title, tags, authors or keywords.
