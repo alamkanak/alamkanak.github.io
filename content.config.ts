@@ -22,6 +22,18 @@ export default defineContentConfig({
         })).optional(),
         date: z.date()
       })
+    }),
+    skills: defineCollection({
+      type: 'data',
+      source: 'skills.yml',
+      schema: z.object({
+        title: z.string(),
+        subtitle: z.string(),
+        skills: z.array(z.object({
+          name: z.string(),
+          description: z.string()
+        }))
+      })
     })
   }
 })
