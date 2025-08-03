@@ -213,6 +213,10 @@
   @apply bg-default border border-default rounded-lg shadow-sm;
 }
 
+.linear-card:hover {
+  @apply bg-muted;
+}
+
 .linear-card-elevated {
   @apply bg-elevated border border-default rounded-lg shadow-md;
 }
@@ -336,20 +340,69 @@ code, pre {
   box-shadow: 0 0 0 3px rgba(var(--color-primary-500), 0.1);
 }
 
-/* Card hover effects */
-.linear-card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.linear-card-hover:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
 /* Staggered animations for grid items */
 .linear-stagger-1 { animation-delay: 0ms; }
 .linear-stagger-2 { animation-delay: 80ms; }
 .linear-stagger-3 { animation-delay: 160ms; }
-.linear-stagger-4 { animation-delay: 240ms; }
+.linear-stagger-4 { animation-delay: 320ms; }
 .linear-stagger-5 { animation-delay: 320ms; }
 .linear-stagger-6 { animation-delay: 400ms; }
+
+/* Enhanced UButton hover states for all variants - Linear.app inspired */
+
+/* Base transitions for all interactive elements */
+button, a[role="button"] {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* All UButton base hover enhancements with transform and shadow */
+button[class*="transition"]:hover:not(:disabled),
+a[class*="transition"]:hover:not(:disabled) {
+  @apply transform;
+}
+
+/* Specific targeting for neutral outline buttons (primary fix for the issue) */
+button[class*="bg-transparent"][class*="border"][class*="text-slate"]:hover:not(:disabled),
+a[class*="bg-transparent"][class*="border"][class*="text-slate"]:hover:not(:disabled) {
+  @apply bg-muted border-accented;
+}
+
+/* More specific targeting for outline variant with neutral color */
+button.bg-transparent.border-slate-200:hover:not(:disabled),
+button.bg-transparent.border-slate-700:hover:not(:disabled),
+a.bg-transparent.border-slate-200:hover:not(:disabled),
+a.bg-transparent.border-slate-700:hover:not(:disabled) {
+  @apply bg-muted border-accented;
+}
+
+/* For when Tailwind generates different class combinations */
+[class*="border-slate"]:hover:not(:disabled) {
+  @apply border-accented;
+}
+
+/* Universal fallback for transparent backgrounds with borders */
+.bg-transparent[class*="border"]:hover:not(:disabled) {
+  @apply bg-muted;
+}
+
+/* Solid variant buttons */
+button[class*="bg-slate-100"]:hover:not(:disabled),
+a[class*="bg-slate-100"]:hover:not(:disabled),
+button[class*="bg-slate-800"]:hover:not(:disabled),
+a[class*="bg-slate-800"]:hover:not(:disabled) {
+  @apply bg-accented;
+}
+
+/* Soft variant buttons */
+button[class*="bg-slate-50"]:hover:not(:disabled),
+a[class*="bg-slate-50"]:hover:not(:disabled),
+button[class*="bg-slate-900"]:hover:not(:disabled),
+a[class*="bg-slate-900"]:hover:not(:disabled) {
+  @apply bg-elevated;
+}
+
+/* Subtle and ghost variant buttons */
+button[class*="bg-transparent"]:not([class*="border"]):hover:not(:disabled),
+a[class*="bg-transparent"]:not([class*="border"]):hover:not(:disabled) {
+  @apply bg-muted text-default;
+}

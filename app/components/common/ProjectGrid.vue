@@ -29,7 +29,7 @@
         v-for="(project, index) in projects"
         :key="project.path"
         :to="project.path"
-        class="group linear-card hover:bg-elevated transition-all duration-300 hover:shadow-lg cursor-pointer"
+        class="group linear-card transition-all duration-300 cursor-pointer"
         :style="{ animationDelay: `${index * 80}ms` }"
       >
         <!-- Thumbnail -->
