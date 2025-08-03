@@ -17,25 +17,28 @@
 </template>
 
 <script setup lang="ts">
+// Fetch profile data from Nuxt Content using shared composable
+const { data: profileData } = useProfile()
+
 // SEO Meta
 useHead({
-  title: 'Raquib Ul Alam - Senior Android Engineer & ML Researcher',
+  title: profileData.value?.seo?.title || '',
   meta: [
     {
       name: 'description',
-      content: 'Senior Android Engineer with 10+ years experience, specializing in on-device ML deployment and signal processing. Academic researcher in medical image and signal processing.'
+      content: profileData.value?.seo?.description || ''
     },
     {
       name: 'keywords',
-      content: 'Android Engineer, Machine Learning, Signal Processing, Medical Image Processing, Mobile Development, On-device ML, TensorFlow'
+      content: profileData.value?.seo?.keywords || ''
     },
     {
       property: 'og:title',
-      content: 'Raquib Ul Alam - Senior Android Engineer & ML Researcher'
+      content: profileData.value?.seo?.title || ''
     },
     {
       property: 'og:description',
-      content: 'Senior Android Engineer with 10+ years experience, specializing in on-device ML deployment and signal processing.'
+      content: profileData.value?.seo?.description || ''
     },
     {
       property: 'og:type',
@@ -47,11 +50,11 @@ useHead({
     },
     {
       name: 'twitter:title',
-      content: 'Raquib Ul Alam - Senior Android Engineer & ML Researcher'
+      content: profileData.value?.seo?.title || ''
     },
     {
       name: 'twitter:description',
-      content: 'Senior Android Engineer with 10+ years experience, specializing in on-device ML deployment and signal processing.'
+      content: profileData.value?.seo?.description || ''
     }
   ]
 })
@@ -64,24 +67,12 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Person',
-        name: 'Raquib Ul Alam',
-        jobTitle: 'Senior Android Engineer',
-        description: 'Senior Android Engineer with specialization in on-device deployment of machine learning and signal processing models',
-        url: 'https://alamkanak.github.io',
-        sameAs: [
-          'https://github.com/alamkanak',
-          'https://stackoverflow.com/users/1113765/raquib-ul-alam',
-          'https://www.linkedin.com/in/alamkanak/',
-          'https://dribbble.com/kanak'
-        ],
-        knowsAbout: [
-          'Android Development',
-          'Machine Learning',
-          'Signal Processing',
-          'Computer Vision',
-          'TensorFlow',
-          'Medical Image Processing'
-        ]
+        name: profileData.value?.name || '',
+        jobTitle: profileData.value?.seo?.jobTitle || '',
+        description: profileData.value?.seo?.description || '',
+        url: profileData.value?.seo?.url || 'https://alamkanak.github.io',
+        sameAs: profileData.value?.social?.map(s => s.url) || [],
+        knowsAbout: profileData.value?.expertise || []
       })
     }
   ]

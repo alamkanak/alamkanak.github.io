@@ -34,6 +34,36 @@ export default defineContentConfig({
           description: z.string()
         }))
       })
+    }),
+    profile: defineCollection({
+      type: 'data',
+      source: 'profile.yml',
+      schema: z.object({
+        name: z.string(),
+        avatar: z.object({
+          src: z.string(),
+          alt: z.string(),
+          width: z.number(),
+          height: z.number()
+        }),
+        bio: z.object({
+          greeting: z.string(),
+          description: z.string()
+        }),
+        seo: z.object({
+          title: z.string(),
+          description: z.string(),
+          keywords: z.string(),
+          jobTitle: z.string(),
+          url: z.string()
+        }),
+        social: z.array(z.object({
+          platform: z.string(),
+          url: z.string(),
+          icon: z.string()
+        })),
+        expertise: z.array(z.string())
+      })
     })
   }
 })

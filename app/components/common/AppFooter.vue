@@ -7,38 +7,13 @@
           <span class="text-muted text-sm font-medium">Connect with me:</span>
           <div class="flex items-center gap-3">
             <UButton
-              to="https://github.com/alamkanak"
+              v-for="social in socialLinks"
+              :key="social.platform"
+              :to="social.url"
               target="_blank"
               color="neutral"
               variant="ghost"
-              icon="mdi:github"
-              size="md"
-              class="hover:bg-muted transition-colors p-2"
-            />
-            <UButton
-              to="https://www.linkedin.com/in/alamkanak/"
-              target="_blank"
-              color="neutral"
-              variant="ghost"
-              icon="mdi:linkedin"
-              size="md"
-              class="hover:bg-muted transition-colors p-2"
-            />
-            <UButton
-              to="https://stackoverflow.com/users/1113765/raquib-ul-alam"
-              target="_blank"
-              color="neutral"
-              variant="ghost"
-              icon="mdi:stack-overflow"
-              size="md"
-              class="hover:bg-muted transition-colors p-2"
-            />
-            <UButton
-              to="https://dribbble.com/kanak"
-              target="_blank"
-              color="neutral"
-              variant="ghost"
-              icon="mdi:dribbble"
+              :icon="social.icon"
               size="md"
               class="hover:bg-muted transition-colors p-2"
             />
@@ -81,4 +56,13 @@
 <script setup lang="ts">
 // Get current year for copyright
 const currentYear = new Date().getFullYear()
+
+// Query the profile data to get social contacts using shared composable
+const { data: profile } = useProfile()
+
+// Filter out email from social links for footer (showing only platform links)
+const socialLinks = computed(() => {
+  if (!profile.value?.social) return []
+  return profile.value.social
+})
 </script>

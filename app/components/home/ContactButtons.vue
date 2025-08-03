@@ -30,31 +30,17 @@ interface ContactLink {
   icon: string
 }
 
-const contacts: ContactLink[] = [
-  {
-    label: 'GitHub',
-    url: 'https://github.com/alamkanak',
-    icon: 'mdi:github'
-  },
-  {
-    label: 'Stack Overflow',
-    url: 'https://stackoverflow.com/users/1113765/raquib-ul-alam',
-    icon: 'mdi:stack-overflow'
-  },
-  {
-    label: 'Email',
-    url: 'mailto:alam.kanak@gmail.com',
-    icon: 'mdi:email'
-  },
-  {
-    label: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/alamkanak/',
-    icon: 'mdi:linkedin'
-  },
-  {
-    label: 'Dribbble',
-    url: 'https://dribbble.com/kanak',
-    icon: 'mdi:dribbble'
-  }
-]
+// Query the profile data to get social contacts using shared composable
+const { data: profile } = useProfile()
+
+// Transform profile social data to match ContactLink interface
+const contacts = computed<ContactLink[]>(() => {
+  if (!profile.value?.social) return []
+  
+  return profile.value.social.map((social) => ({
+    label: social.platform.charAt(0).toUpperCase() + social.platform.slice(1),
+    url: social.url,
+    icon: social.icon
+  }))
+})
 </script>
