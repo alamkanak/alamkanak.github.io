@@ -53,14 +53,6 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Automatically inject router.base in your Nuxt configuration file and set
-          # target to static (https://nuxtjs.org/docs/configuration-glossary/configuration-target/).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: nuxt
       - name: Install dependencies
         run: |
           if [[ "${{ steps.detect-package-manager.outputs.manager }}" == "yarn" ]]; then
@@ -92,8 +84,22 @@ jobs:
         run: |
           echo "Cleaning Nuxt cache..."
           rm -rf .nuxt .output node_modules/.cache
+          echo "Checking nuxt.config.ts..."
+          cat nuxt.config.ts | head -20
           echo "Running Nuxt prepare..."
           ${{ steps.detect-package-manager.outputs.manager }} run postinstall
+          echo "Checking nuxi info after prepare..."
+          npx nuxi info
+          echo "Checking if modules are being loaded..."
+          if npx nuxi info | grep -q "@nuxt/image"; then
+            echo "✅ @nuxt/image module is being loaded by Nuxt"
+          else
+            echo "❌ @nuxt/image module is NOT being loaded by Nuxt"
+            echo "Trying to force reinstall..."
+            ${{ steps.detect-package-manager.outputs.manager }} add @nuxt/image@1.11.0 --exact
+            echo "Running prepare again..."
+            ${{ steps.detect-package-manager.outputs.manager }} run postinstall
+          fi
       - name: Cache Nuxt build
         uses: actions/cache@v4
         with:
