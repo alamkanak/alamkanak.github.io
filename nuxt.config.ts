@@ -66,26 +66,6 @@ export default defineNuxtConfig({
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     buildAssetsDir: process.env.NUXT_APP_BUILD_ASSETS_DIR || '/_nuxt/'
   },
-  // Configure hooks for GitHub Pages SPA fallback
-  hooks: {
-    'nitro:build:public-assets': async () => {
-      // Copy index.html to 404.html for GitHub Pages SPA fallback
-      const { copyFile, access } = await import('node:fs/promises')
-      const { join } = await import('node:path')
-      
-      const outputDir = process.env.NUXT_APP_BUILD_ASSETS_DIR || '_nuxt'
-      const sourceIndex = join(outputDir, 'index.html')
-      const target404 = join(outputDir, '404.html')
-      
-      try {
-        await access(sourceIndex)
-        await copyFile(sourceIndex, target404)
-        console.log('✓ Copied index.html to 404.html for GitHub Pages SPA fallback')
-      } catch (error) {
-        console.warn('⚠ Could not copy index.html to 404.html:', (error as Error).message)
-      }
-    }
-  },
   // Optimize for static generation
   experimental: {
     payloadExtraction: false
