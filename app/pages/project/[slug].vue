@@ -87,7 +87,7 @@ useSeoMeta({
 
       </div>
 
-      <div class="flex gap-4">
+      <div class="flex gap-4 items-start">
 
         <!-- Project Content -->
         <div class="flex-1">

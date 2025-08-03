@@ -1,0 +1,11 @@
+tags:
+  - label: Machine Learning
+    icon: carbon:machine-learning-model
+  - label: Web Development
+    icon: carbon:web-services-container
+  - label: Android Development
+    icon: material-symbols:android
+  - label: UX Design
+    icon: mdi:art
+  - label: Drawing
+    icon: carbon:draw

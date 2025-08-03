@@ -64,6 +64,16 @@ export default defineContentConfig({
         })),
         expertise: z.array(z.string())
       })
+    }),
+    projectTags: defineCollection({
+      type: 'data',
+      source: 'project-tags.yml',
+      schema: z.object({
+        tags: z.array(z.object({
+          label: z.string(),
+          icon: z.string()
+        }))
+      })
     })
   }
 })

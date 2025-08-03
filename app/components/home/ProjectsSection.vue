@@ -26,11 +26,26 @@ interface Project {
   tags?: string[]
 }
 
+interface ProjectTagConfig {
+  label: string
+  icon: string
+}
+
+interface ProjectTagsData {
+  tags: ProjectTagConfig[]
+}
+
 // Fetch projects dynamically from Nuxt Content
 const { data: projects, pending } = await useAsyncData('projects', () => {
   return queryCollection('project')
     .order('date', 'DESC')
     .all()
+})
+
+// Fetch project tags configuration from Nuxt Content
+const { data: projectTagsConfig } = await useAsyncData('project-tags-config', () => {
+  return queryCollection('projectTags')
+    .first()
 })
 
 // Router for URL management
@@ -51,16 +66,14 @@ onMounted(() => {
   activeFilter.value = (route.query.tag as string) || null
 })
 
-// Define custom order for tags
-const tagOrder = [
-  'Machine Learning',
-  'Web Development',
-  'Android Development',
-  'UX Design',
-  'Drawing'
-]
+// Get available tags from the configuration
+const configuredTags = computed(() => {
+  // Cast to unknown first to avoid type issues with auto-generated types
+  const data = projectTagsConfig.value as unknown as ProjectTagsData
+  return data?.tags || []
+})
 
-// Compute unique tags from all projects with custom ordering
+// Compute unique tags from all projects, maintaining the order from configuration
 const allTags = computed(() => {
   if (!projects.value) return []
   
@@ -72,24 +85,25 @@ const allTags = computed(() => {
   })
   
   const availableTags = Array.from(tagSet)
+  const configuredTagLabels = configuredTags.value.map((tag: ProjectTagConfig) => tag.label)
   
-  // Sort tags based on custom order, putting ordered tags first
+  // Sort tags based on configuration order, putting configured tags first
   return availableTags.sort((a, b) => {
-    const aIndex = tagOrder.indexOf(a)
-    const bIndex = tagOrder.indexOf(b)
+    const aIndex = configuredTagLabels.indexOf(a)
+    const bIndex = configuredTagLabels.indexOf(b)
     
-    // If both tags are in the custom order, sort by their position
+    // If both tags are in the configuration, sort by their position
     if (aIndex !== -1 && bIndex !== -1) {
       return aIndex - bIndex
     }
     
-    // If only 'a' is in custom order, it comes first
+    // If only 'a' is in configuration, it comes first
     if (aIndex !== -1) return -1
     
-    // If only 'b' is in custom order, it comes first
+    // If only 'b' is in configuration, it comes first
     if (bIndex !== -1) return 1
     
-    // If neither is in custom order, sort alphabetically
+    // If neither is in configuration, sort alphabetically
     return a.localeCompare(b)
   })
 })
@@ -112,19 +126,14 @@ const filters = computed(() => {
       project.tags?.includes(tag)
     ).length || 0
     
-    // Map tag names to appropriate icons
-    const iconMap: Record<string, string> = {
-      'Android Development': 'material-symbols:android',
-      'Web Development': 'carbon:web-services-container',
-      'Machine Learning': 'carbon:machine-learning-model',
-      'UX Design': 'mdi:art',
-      'Drawing': 'carbon:draw',
-    }
+    // Get icon from configuration, fallback to default if not found
+    const configuredTag = configuredTags.value.find((configTag: ProjectTagConfig) => configTag.label === tag)
+    const icon = configuredTag?.icon || 'carbon:tag'
     
     return {
       label: tag,
       value: tag,
-      icon: iconMap[tag] || 'carbon:tag',
+      icon,
       count
     }
   }).filter(filter => filter.count > 0) // Only show tags that have projects
