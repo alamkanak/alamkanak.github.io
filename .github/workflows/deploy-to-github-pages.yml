@@ -17,22 +17,16 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout portfolio repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile
 
       - name: Build and generate static site
-        run: yarn generate
+        run: npx nuxt build --preset github_pages
         env:
           NODE_ENV: production
           NITRO_PRESET: github-pages
@@ -43,7 +37,6 @@ jobs:
           repository: alamkanak/alamkanak.github.io
           token: ${{ secrets.GH_PAGES_TOKEN }}
           path: gh-pages-repo
-          fetch-depth: 0
 
       - name: Clean GitHub Pages repository
         run: |
