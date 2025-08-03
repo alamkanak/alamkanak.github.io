@@ -4,7 +4,7 @@ lang: en-US
 tags: ['Machine Learning']
 thumbnail: ./mri-thumb.png
 description: A pipeline to process, classify and explain CNN models for MRI.
-info: [{key: 'Role', value: 'Lear researcher'}, {key: 'Affiliation', value: 'University of Sydney'}, {key: 'Skills involved', value: ['Machine Learning', 'Medical Image Processing', 'Computer Vision']}, {key: 'Tech used', value: ['Python', 'OpenCV', 'Tensorflow']}]
+info: [{key: 'Role', value: 'Lead researcher'}, {key: 'Affiliation', value: 'University of Sydney'}, {key: 'Skills involved', value: ['Machine Learning', 'Medical Image Processing', 'Computer Vision']}, {key: 'Tech used', value: ['Python', 'OpenCV', 'Tensorflow']}]
 date: 2020-10-01
 ---
 
