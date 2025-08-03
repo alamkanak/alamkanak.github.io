@@ -1,31 +1,22 @@
-# Sample workflow for building and deploying a Nuxt site to GitHub Pages
-#
-# To get started with Nuxt see: https://nuxtjs.org/docs/get-started/installation
-#
 name: Deploy Nuxt site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     env:
@@ -54,78 +45,23 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Install dependencies
-        run: |
-          if [[ "${{ steps.detect-package-manager.outputs.manager }}" == "yarn" ]]; then
-            echo "Using Yarn to install dependencies..."
-            yarn install --frozen-lockfile
-          else
-            echo "Using NPM to install dependencies..."
-            npm ci
-          fi
-      - name: Verify and fix Nuxt Image installation
-        run: |
-          echo "Checking if @nuxt/image is installed..."
-          if ! ${{ steps.detect-package-manager.outputs.manager }} list @nuxt/image; then
-            echo "❌ @nuxt/image not found in dependencies, installing..."
-            ${{ steps.detect-package-manager.outputs.manager }} add @nuxt/image@1.11.0
-          else
-            echo "✅ @nuxt/image found in dependencies"
-          fi
-          echo "Checking node_modules..."
-          if [ ! -d "node_modules/@nuxt/image" ]; then
-            echo "❌ @nuxt/image not found in node_modules, reinstalling..."
-            ${{ steps.detect-package-manager.outputs.manager }} add @nuxt/image@1.11.0
-          else
-            echo "✅ @nuxt/image found in node_modules"
-          fi
-          echo "Checking package.json for @nuxt/image..."
-          grep -n "@nuxt/image" package.json || echo "❌ Not found in package.json"
-      - name: Clean and prepare Nuxt
-        run: |
-          echo "Cleaning Nuxt cache..."
-          rm -rf .nuxt .output node_modules/.cache
-          echo "Checking nuxt.config.ts..."
-          cat nuxt.config.ts | head -20
-          echo "Running Nuxt prepare..."
-          ${{ steps.detect-package-manager.outputs.manager }} run postinstall
-          echo "Checking nuxi info after prepare..."
-          npx nuxi info
-          echo "Checking if modules are being loaded..."
-          if npx nuxi info | grep -q "@nuxt/image"; then
-            echo "✅ @nuxt/image module is being loaded by Nuxt"
-          else
-            echo "❌ @nuxt/image module is NOT being loaded by Nuxt"
-            echo "Trying to force reinstall..."
-            ${{ steps.detect-package-manager.outputs.manager }} add @nuxt/image@1.11.0 --exact
-            echo "Running prepare again..."
-            ${{ steps.detect-package-manager.outputs.manager }} run postinstall
-          fi
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Cache Nuxt build
         uses: actions/cache@v4
         with:
           path: |
             .nuxt
             .output
-            node_modules/.cache
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('**/yarn.lock', '**/package-lock.json') }}-${{ hashFiles('**/*.vue', '**/*.ts', '**/*.js') }}
+          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('**/yarn.lock', '**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-nuxt-build-${{ hashFiles('**/yarn.lock', '**/package-lock.json') }}-
             ${{ runner.os }}-nuxt-build-
       - name: Static HTML export with Nuxt
-        env:
-          DEBUG: 'nuxt:*'
-        run: |
-          echo "🚀 Starting Nuxt generation..."
-          echo "Nuxt info:"
-          npx nuxi info || echo "Failed to get nuxi info"
-          echo "Starting generation with debug mode..."
-          ${{ steps.detect-package-manager.outputs.manager }} run generate
+        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_nuxt
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
