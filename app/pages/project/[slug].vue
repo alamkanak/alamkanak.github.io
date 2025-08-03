@@ -87,10 +87,11 @@ useSeoMeta({
 
       </div>
 
-      <div class="flex gap-4 items-start">
+      <!-- Mobile: Stack vertically, Desktop: Side by side -->
+      <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
 
         <!-- Project Content -->
-        <div class="flex-1">
+        <div class="w-full lg:flex-1 order-2 lg:order-1">
           <ProjectContent 
             v-if="page"
             :content="page"
@@ -107,7 +108,7 @@ useSeoMeta({
           :links="page.links"
           :info="page.info"
           :date="new Date(page.date)"
-          class="w-72"
+          class="w-full lg:w-80 lg:flex-shrink-0 order-1 lg:order-2"
         />
       </div>
 
