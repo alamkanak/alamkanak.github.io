@@ -51,8 +51,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build static site for GitHub Pages
-        run: yarn build --preset github_pages
+      - name: Generate static site for GitHub Pages
+        run: yarn generate
         env:
           # Set base URL for GitHub Pages (alamkanak.github.io)
           NUXT_APP_BASE_URL: /
@@ -68,8 +68,15 @@ jobs:
           rm -rf docs
           # Create docs folder
           mkdir -p docs
-          # Copy build output to docs folder
-          cp -r .output/public/* docs/
+          # Check if .output/public exists and copy files
+          if [ -d ".output/public" ] && [ "$(ls -A .output/public)" ]; then
+            cp -r .output/public/* docs/
+          else
+            echo "Error: .output/public directory is empty or does not exist"
+            echo "Checking build output structure:"
+            find .output -type f -name "*.html" -o -name "*.js" -o -name "*.css" | head -20
+            exit 1
+          fi
           # Create .nojekyll file to disable Jekyll processing
           touch docs/.nojekyll
           # Create CNAME file if needed (for custom domain)
