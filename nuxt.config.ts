@@ -54,7 +54,8 @@ export default defineNuxtConfig({
     // Prerender routes for static generation
     prerender: {
       routes: ['/'],
-      crawlLinks: true
+      crawlLinks: true,
+      autoSubfolderIndex: false
     },
     // GitHub Pages specific configuration
     output: {
