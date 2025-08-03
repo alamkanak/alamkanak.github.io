@@ -4,11 +4,11 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "build:github-pages": "nuxt build --preset github_pages",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "deploy": "nuxt generate && npx gh-pages --dotfiles -d .output/public"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxt/content": "^3.6.3",

@@ -22,3 +22,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# GitHub Pages deployment (docs folder is tracked)
+# The docs/ folder is intentionally tracked as it contains the deployed site

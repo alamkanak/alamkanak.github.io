@@ -37,9 +37,25 @@ export default defineNuxtConfig({
     ]
   },
   nitro: {
+    // Configure for GitHub Pages deployment
+    preset: process.env.NITRO_PRESET || 'static',
     // Prerender routes for static generation
     prerender: {
-      routes: ['/']
+      routes: ['/'],
+      crawlLinks: true
+    },
+    // GitHub Pages specific configuration
+    output: {
+      publicDir: process.env.NUXT_APP_BUILD_ASSETS_DIR || '_nuxt'
     }
+  },
+  // GitHub Pages deployment configuration
+  app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    buildAssetsDir: process.env.NUXT_APP_BUILD_ASSETS_DIR || '/_nuxt/'
+  },
+  // Optimize for static generation
+  experimental: {
+    payloadExtraction: false
   }
 })
