@@ -28,6 +28,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      NITRO_PRESET: static
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -59,19 +61,59 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: nuxt
-      - name: Restore cache
+      - name: Install dependencies
+        run: |
+          if [[ "${{ steps.detect-package-manager.outputs.manager }}" == "yarn" ]]; then
+            echo "Using Yarn to install dependencies..."
+            yarn install --frozen-lockfile
+          else
+            echo "Using NPM to install dependencies..."
+            npm ci
+          fi
+      - name: Verify and fix Nuxt Image installation
+        run: |
+          echo "Checking if @nuxt/image is installed..."
+          if ! ${{ steps.detect-package-manager.outputs.manager }} list @nuxt/image; then
+            echo "❌ @nuxt/image not found in dependencies, installing..."
+            ${{ steps.detect-package-manager.outputs.manager }} add @nuxt/image@1.11.0
+          else
+            echo "✅ @nuxt/image found in dependencies"
+          fi
+          echo "Checking node_modules..."
+          if [ ! -d "node_modules/@nuxt/image" ]; then
+            echo "❌ @nuxt/image not found in node_modules, reinstalling..."
+            ${{ steps.detect-package-manager.outputs.manager }} add @nuxt/image@1.11.0
+          else
+            echo "✅ @nuxt/image found in node_modules"
+          fi
+          echo "Checking package.json for @nuxt/image..."
+          grep -n "@nuxt/image" package.json || echo "❌ Not found in package.json"
+      - name: Clean and prepare Nuxt
+        run: |
+          echo "Cleaning Nuxt cache..."
+          rm -rf .nuxt .output node_modules/.cache
+          echo "Running Nuxt prepare..."
+          ${{ steps.detect-package-manager.outputs.manager }} run postinstall
+      - name: Cache Nuxt build
         uses: actions/cache@v4
         with:
           path: |
-            _nuxt
             .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('_nuxt') }}
+            .output
+            node_modules/.cache
+          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('**/yarn.lock', '**/package-lock.json') }}-${{ hashFiles('**/*.vue', '**/*.ts', '**/*.js') }}
           restore-keys: |
+            ${{ runner.os }}-nuxt-build-${{ hashFiles('**/yarn.lock', '**/package-lock.json') }}-
             ${{ runner.os }}-nuxt-build-
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
-        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
+        env:
+          DEBUG: 'nuxt:*'
+        run: |
+          echo "🚀 Starting Nuxt generation..."
+          echo "Nuxt info:"
+          npx nuxi info || echo "Failed to get nuxi info"
+          echo "Starting generation with debug mode..."
+          ${{ steps.detect-package-manager.outputs.manager }} run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
