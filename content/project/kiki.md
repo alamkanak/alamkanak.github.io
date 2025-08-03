@@ -1,7 +1,7 @@
 ---
 title: Kiki Robot
 lang: en-US
-tags: ['Android Development', 'Machine Learning']
+tags: ['Machine Learning', 'Android Development']
 thumbnail: ./zoetic-kiki-thumb.png
 description: An Android Robot Pet That Grows With You.
 links: [

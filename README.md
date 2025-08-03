@@ -1,4 +1,4 @@
-# Raquib Ul Alam - Portfolio Website
+# Nuxt Portfolio Website
 
 A modern, responsive portfolio website built with Nuxt 4, showcasing the work and expertise of Raquib Ul Alam, a Senior Android Engineer and ML Researcher.
 
@@ -55,7 +55,7 @@ npm run generate
 
 ### Managing Content
 
-All contents are located in the `content/` directory. You can add, edit, or remove projects and profile details using Markdown and YAML files. The site uses Nuxt Content to render these files dynamically.
+All contents are located in the `content/` directory. You can add, edit, or remove projects and profile details using Markdown and YAML files. The site uses Nuxt Content to render these files dynamically. Icons are used from Nuxt Icon: https://icon-sets.iconify.design/
 
 ## 👨‍💻 About
 

@@ -1,7 +1,7 @@
 ---
 title: Art Guide
 lang: en-US
-tags: ['Android Development', 'UX Design', 'Machine Learning']
+tags: ['Machine Learning', 'Android Development', 'UX Design']
 thumbnail: ./art-guide-thumb.png
 description: Learn how to draw with AI, easy step-by-step animations and voiceovers.
 links: [{url: 'https://play.google.com/store/apps/details?id=io.github.alamkanak.artguide', text: 'Get it on Google Play', icon: 'mdi:google-play'}, {url: 'https://art-guide.github.io/art-guide-app-page/', text: 'Visit Homepage', icon: 'material-symbols:home-outline'}]

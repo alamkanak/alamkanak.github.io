@@ -7,13 +7,13 @@ avatar:
 
 bio:
   greeting: "Hi! I'm Raquib Ul Alam"
-  description: "Professionally, I work as a Senior Android Engineer with a specialization in on-device deployment of machine learning and signal processing models. My Android experiences span over ten years. Academically, my research focusses on medical image and signal processing towards the development of machine learning and statistical models."
+  description: "Professionally, I work as a Staff Machine Learning Engineer and Researcher with a specialization in large language models (LLMs), machine learning models, statistical models, and signal processing models. My experiences span over ten years. Academically, my research focuses on medical image and signal processing towards the development of machine learning and statistical models."
 
 seo:
-  title: "Raquib Ul Alam - Senior Android Engineer & ML Researcher"
-  description: "Senior Android Engineer with 10+ years experience, specializing in on-device ML deployment and signal processing. Academic researcher in medical image and signal processing."
-  keywords: "Android Engineer, Machine Learning, Signal Processing, Medical Image Processing, Mobile Development, On-device ML, TensorFlow"
-  jobTitle: "Senior Android Engineer"
+  title: "Raquib Ul Alam - Staff Machine Learning Engineer & Researcher"
+  description: "Staff Machine Learning Engineer with 10+ years experience, specializing in on-device ML deployment and signal processing. Academic researcher in medical image and signal processing."
+  keywords: "Engineer, LLM, Large Language Model, Machine Learning, Signal Processing, Medical Image Processing, Mobile Development, On-device ML, TensorFlow"
+  jobTitle: "Staff Machine Learning Engineer"
   url: "https://alamkanak.github.io"
 
 social:
@@ -34,9 +34,9 @@ social:
     icon: "mdi:email"
 
 expertise:
-  - "Android Development"
   - "Machine Learning"
   - "Signal Processing"
   - "Computer Vision"
   - "TensorFlow"
   - "Medical Image Processing"
+  - "Android Development"
