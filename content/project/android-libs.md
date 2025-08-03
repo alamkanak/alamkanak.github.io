@@ -4,7 +4,7 @@ lang: en-US
 tags: ['Web Development', 'UX Design']
 thumbnail: ./android-libs-thumb.png
 description: A website for finding useful Android development libraries.
-links: [{url: 'https://github.com/alamkanak/android-libraries-and-resources', text: 'View on Github', icon: ['fab', 'github']}, {url: 'https://alamkanak.github.io/android-libraries-and-resources', text: 'Visit the site', icon: ['fas', 'home']}]
+links: [{url: 'https://github.com/alamkanak/android-libraries-and-resources', text: 'View on Github', icon: 'mdi:github'}, {url: 'https://alamkanak.github.io/android-libraries-and-resources', text: 'Visit the site', icon: 'material-symbols:home-outline'}]
 info: [{key: 'Role', value: 'Web developer'}, {key: 'Employment', value: 'Self employed'}, {key: 'Skills involved', value: ['Web development', 'UX Design']}, {key: 'Tech used', value: ['Javascript']}]
 date: 2017-01-01
 ---

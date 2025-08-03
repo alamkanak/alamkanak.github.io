@@ -1,6 +1,6 @@
 <template>
   <div class="bg-default min-h-screen flex items-center justify-center">
-    <div class="text-center max-w-md mx-auto px-4">
+    <div class="text-center mx-auto px-4">
       <Icon name="mdi:alert-circle-outline" size="4em" class="text-warning mx-auto mb-6" />
       
       <h1 class="text-3xl font-bold text-highlighted mb-4">

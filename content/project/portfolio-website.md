@@ -4,7 +4,7 @@ lang: en-US
 tags: ['Web Development']
 thumbnail: ./portfolio-thumb.png
 description: A Vue.js website to showcase portfolio projects.
-links: [{url: 'https://alamkanak.github.io/', text: 'View the website', icon: ['fas', 'home']}]
+links: [{url: 'https://alamkanak.github.io/', text: 'View the website', icon: 'material-symbols:home-outline'}]
 info: [{key: 'Role', value: 'Web developer'}, {key: 'Employment', value: 'Self employed'}, {key: 'Skills involved', value: ['Web development']}, {key: 'Tech used', value: ['Javascript', 'Vue.js']}]
 date: 2020-01-01
 ---

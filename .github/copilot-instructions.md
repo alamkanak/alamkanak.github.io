@@ -26,7 +26,7 @@
 13. Write typesafe code. Use types for all variables, functions, and components.
 14. Use Nuxt 4 and Vue 3 best practices everywhere.
 15. Use yarn instead of npm.
-16. Use icons available in @nuxt/icon instead. See more details at Context7 with project id `/nuxt/icon`.
+16. Use icons available in @nuxt/icon instead. See more details at Context7 with project id `/nuxt/icon`. Do not install any new icons library.
 17. For icons, do not use tailwind size classes. Icon components have size prop for this. Example: `size="1em"`.
 18. Use components from @nuxt/ui library as much as possible.
 19. Any place where a network request is being made, ui must show a loading state with animation.

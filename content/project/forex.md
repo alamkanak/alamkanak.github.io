@@ -4,7 +4,7 @@ lang: en-US
 tags: ['Android Development', 'UX Design']
 thumbnail: ./forex-thumb.png
 description: An android app to get currency trading alerts and notifications
-links: [{url: 'https://play.google.com/store/apps/details?id=com.forexachievers.signals', text: 'Get it on Google Play', icon: ['fab', 'google-play']}]
+links: [{url: 'https://play.google.com/store/apps/details?id=com.forexachievers.signals', text: 'Get it on Google Play', icon: 'mdi:google-play'}]
 info: [{key: 'Role', value: 'Freelance Software Engineer'}, {key: 'Employment', value: 'ForexAchievers, Singapore'}, {key: 'Skills involved', value: ['Android Development', 'Performance Analysis', 'Subscription Billing']}, {key: 'Tech used', value: ['Kotlin', 'Android SDK', 'Jetpack Libraries', 'Dagger', 'RxJava', 'Google In App Billing']}]
 date: 2018-05-01
 ---
@@ -27,4 +27,4 @@ You will be get access to the Open Alerts section which shows you all the trades
 You will also receive LIVE notifications direct to your mobile device. Never miss a trading opportunity again.
 
 
-::: youtube https://www.youtube.com/embed/6rrSnwwt6kY
+::youtube{src="https://www.youtube.com/embed/6rrSnwwt6kY"}

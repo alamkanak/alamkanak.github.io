@@ -4,7 +4,7 @@ lang: en-US
 tags: ['Machine Learning']
 thumbnail: ./thesis-thumb.png
 description: Thesis to develop standardized pipelines MRI and EEG signals.
-links: [{url: 'https://hdl.handle.net/2123/24270', text: 'View in University of Sydney Library', icon: ['fas', 'book']}]
+links: [{url: 'https://hdl.handle.net/2123/24270', text: 'View in University of Sydney Library', icon: 'carbon:book'}]
 info: [{key: 'Role', value: 'Masters student'}, {key: 'Affiliation', value: 'University of Sydney'}, {key: 'Skills involved', value: ['Signal processing', 'Machine learning']}, {key: 'Tech used', value: ['Python', 'MATLAB', 'Tensorflow']}]
 date: 2020-01-01
 ---

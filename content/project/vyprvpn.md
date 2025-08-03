@@ -5,8 +5,8 @@ tags: ['Android Development']
 thumbnail: ./vyprvpn-thumb.png
 description: World's most powerful VPN app.
 links: [
-    {url: 'https://play.google.com/store/apps/details?id=com.goldenfrog.vyprvpn.app', text: 'Get it on Google Play', icon: ['fab', 'google-play']}, 
-    {url: 'https://www.vyprvpn.com/', text: 'Visit homepage', icon: ['fas', 'home']}
+    {url: 'https://play.google.com/store/apps/details?id=com.goldenfrog.vyprvpn.app', text: 'Get it on Google Play', icon: 'mdi:google-play'}, 
+    {url: 'https://www.vyprvpn.com/', text: 'Visit homepage', icon: 'material-symbols:home-outline'}
 ]
 info: [{key: 'Role', value: 'Lead Software Engineer'}, {key: 'Employment', value: 'Golden Frog GmbH and Powerhouse Management Inc., TX, USA'}, {key: 'Skills involved', value: ['Android SDK', 'Custom View Development', 'Performance Analysis', 'Android NDK Development', 'Continuous Integration']}, {key: 'Tech used', value: ['Java', 'Kotlin', 'Android SDK', 'Android NDK', 'Bamboo', 'Performance Monitor']}]
 date: 2019-12-01
@@ -21,4 +21,4 @@ VyprVPN is the app I worked on during my employement at Golden Frog GmbH. I was 
 - Utilize Jira, Confluence, Bitbucket, Bamboo etc. to work in an agile environment. 
 - Collaborate with other teams like DevOps, iOS, Mac, Windows etc.
 
-::: youtube https://www.youtube.com/embed/Qm0lm7Cwj08
+::youtube{src="https://www.youtube.com/embed/Qm0lm7Cwj08"}

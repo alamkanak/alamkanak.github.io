@@ -4,7 +4,7 @@ lang: en-US
 tags: ['Android Development', 'UX Design']
 thumbnail: ./easy-greeting-thumb.png
 description: An Android app that allows creating custom greeting cards.
-links: [{url: 'https://apkpure.com/easy-greeting-maker/com.mobiobject.easygreetingmaker.app', text: 'Get it on third party app store', icon: ['fas', 'store']}]
+links: [{url: 'https://apkpure.com/easy-greeting-maker/com.mobiobject.easygreetingmaker.app', text: 'Get it on third party app store', icon: 'material-symbols:rocket-outline'}]
 info: [{key: 'Status', value: 'Discontinued'}, {key: 'Role', value: 'Freelance Software Engineer'}, {key: 'Employment', value: 'Mobi Object, India'}, {key: 'Skills involved', value: ['Android SDK', 'Custom View Development', 'Performance Analysis', 'UX Design', 'API Development']}, {key: 'Tech used', value: ['Java', 'Android SDK', 'Laravel']}]
 date: 2017-01-01
 ---
@@ -36,6 +36,5 @@ This Application provide different themes such as
 
 <br/>
 
-::: youtube https://www.youtube.com/embed/0RqZXI2B1gI
-:::
+::youtube{src="https://www.youtube.com/embed/0RqZXI2B1gI"}
 <br/>

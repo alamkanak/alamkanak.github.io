@@ -5,7 +5,7 @@ tags: ['Android Development', 'Machine Learning']
 thumbnail: ./zoetic-kiki-thumb.png
 description: An Android Robot Pet That Grows With You.
 links: [
-    {url: 'https://kiki.ai', text: 'Visit homepage', icon: ['fas', 'home']}
+    {url: 'https://kiki.ai', text: 'Visit homepage', icon: 'material-symbols:home-outline'}
 ]
 info: [{key: 'Role', value: 'Lead Software Engineer'}, {key: 'Employment', value: 'Zoetic, Inc., Santa Clara, California, United States'}, {key: 'Skills involved', value: ['Android SDK', 'Signal Processing', 'Performance Analysis', 'Android NDK Development', 'Tensorflow', 'Machine Learning']}, {key: 'Tech used', value: ['Java', 'Kotlin', 'Android SDK', 'Android NDK', 'Tensorflow', 'Android Performance Monitor', 'Python']}]
 date: 2022-01-01
@@ -30,4 +30,4 @@ Kiki is an advanced Android robot that utilizes cutting-edge technologies such a
 - Testing and validating the android codes through thorough unit testing to ensure optimal performance and user experience.
 ---
 
-::: youtube https://www.youtube.com/embed/CreyjtMbOzg
+::youtube{src="https://www.youtube.com/embed/CreyjtMbOzg"}
