@@ -23,7 +23,7 @@ const nextProject = computed(() => props.surround[1]) // Next = Previous chronol
       <div v-if="prevProject" class="flex-1">
         <ULink 
           :to="prevProject.path"
-          class="group block linear-card p-6 hover:bg-muted transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-primary/20"
+          class="group block border border-accented rounded-lg p-6 hover:bg-muted transition-all duration-300 hover:scale-[1.02] hover:border-primary/20"
         >
           <div class="flex items-center gap-4">
             <div class="flex-shrink-0">
@@ -46,7 +46,7 @@ const nextProject = computed(() => props.surround[1]) // Next = Previous chronol
               <NuxtImg
                 :src="prevProject.thumbnail"
                 :alt="prevProject.title"
-                class="w-16 h-16 rounded-lg object-cover transition-all duration-300 group-hover:shadow-md group-hover:brightness-110"
+                class="w-16 h-16 rounded-lg object-cover transition-all duration-300 group-hover:brightness-110"
                 loading="lazy"
                 format="webp"
                 quality="75"
@@ -63,14 +63,14 @@ const nextProject = computed(() => props.surround[1]) // Next = Previous chronol
       <div v-if="nextProject" class="flex-1">
         <ULink 
           :to="nextProject.path"
-          class="group block linear-card p-6 hover:bg-muted transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-primary/20"
+          class="group block border border-accented rounded-lg p-6 hover:bg-muted transition-all duration-300 hover:scale-[1.02] hover:border-primary/20"
         >
           <div class="flex items-center gap-4">
             <div v-if="nextProject.thumbnail" class="flex-shrink-0 hidden sm:block">
               <NuxtImg
                 :src="nextProject.thumbnail"
                 :alt="nextProject.title"
-                class="w-16 h-16 rounded-lg object-cover transition-all duration-300 group-hover:shadow-md group-hover:brightness-110"
+                class="w-16 h-16 rounded-lg object-cover transition-all duration-300 group-hover:brightness-110"
                 loading="lazy"
                 format="webp"
                 quality="75"
