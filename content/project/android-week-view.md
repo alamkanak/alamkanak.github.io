@@ -10,7 +10,7 @@ date: 2020-08-01
 ---
 ![An image](/android-week-view.png)
 
-::tip
+::tip{title="HIGHLIGHTS"}
 - The library is widely popular among Android developers around the world.
 - It has over 3200 stars on Github.
 - The library inspired developers of other platforms to replicate it in their platform.

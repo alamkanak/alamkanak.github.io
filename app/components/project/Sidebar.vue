@@ -18,22 +18,6 @@ interface Props {
 }
 defineProps<Props>()
 
-
-// const getIconName = (iconArray?: string[]) => {
-//   if (!iconArray || iconArray.length === 0) return 'mdi:external-link'
-  
-//   // Handle Font Awesome icons
-//   if (iconArray.length === 2) {
-//     const [prefix, iconName] = iconArray
-//     if (prefix === 'fab') {
-//       return `i-simple-icons-${iconName}`
-//     } else if (prefix === 'fas') {
-//       return `i-lucide-${iconName}`
-//     }
-//   }
-  
-//   return iconArray.join('-') || 'mdi:external-link'
-// }
 </script>
 
 <template>
@@ -66,8 +50,8 @@ defineProps<Props>()
           :key="item.key"
           class="flex flex-col gap-2 p-4 bg-muted rounded-lg"
         >
-          <dt class="text-sm font-medium text-toned min-w-32">
-            {{ item.key }}:
+          <dt class="text-xs font-bold min-w-32 uppercase text-muted">
+            {{ item.key }}
           </dt>
           <dd class="text-sm text-default">
             <template v-if="Array.isArray(item.value)">

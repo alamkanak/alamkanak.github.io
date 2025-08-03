@@ -12,8 +12,8 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const prevProject = computed(() => props.surround[0])
-const nextProject = computed(() => props.surround[1])
+const prevProject = computed(() => props.surround[0]) // Previous = Next chronologically (newer date)
+const nextProject = computed(() => props.surround[1]) // Next = Previous chronologically (older date)
 </script>
 
 <template>
@@ -23,22 +23,22 @@ const nextProject = computed(() => props.surround[1])
       <div v-if="prevProject" class="flex-1">
         <ULink 
           :to="prevProject.path"
-          class="group block linear-card p-6 hover:bg-muted transition-all duration-300 hover:shadow-md"
+          class="group block linear-card p-6 hover:bg-muted transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-primary/20"
         >
           <div class="flex items-center gap-4">
             <div class="flex-shrink-0">
               <UIcon 
                 name="mingcute:arrow-left-fill" 
                 size="1.25em"
-                class="text-muted group-hover:text-primary transition-colors"
+                class="text-muted group-hover:text-primary transition-all duration-300 group-hover:transform group-hover:-translate-x-1"
               />
             </div>
             <div class="min-w-0 flex-1">
               <p class="text-sm text-muted font-medium mb-1">Previous Project</p>
-              <h3 class="text-lg font-semibold text-highlighted group-hover:text-primary transition-colors line-clamp-1">
+              <h3 class="text-lg font-semibold text-highlighted group-hover:text-primary transition-all duration-300 line-clamp-1">
                 {{ prevProject.title }}
               </h3>
-              <p v-if="prevProject.description" class="text-sm text-toned line-clamp-1 mt-1">
+              <p v-if="prevProject.description" class="text-sm text-toned group-hover:text-highlighted transition-all duration-300 line-clamp-1 mt-1">
                 {{ prevProject.description }}
               </p>
             </div>
@@ -46,7 +46,7 @@ const nextProject = computed(() => props.surround[1])
               <NuxtImg
                 :src="prevProject.thumbnail"
                 :alt="prevProject.title"
-                class="w-16 h-16 rounded-lg object-cover"
+                class="w-16 h-16 rounded-lg object-cover transition-all duration-300 group-hover:shadow-md group-hover:brightness-110"
                 loading="lazy"
                 format="webp"
                 quality="75"
@@ -63,14 +63,14 @@ const nextProject = computed(() => props.surround[1])
       <div v-if="nextProject" class="flex-1">
         <ULink 
           :to="nextProject.path"
-          class="group block linear-card p-6 hover:bg-muted transition-all duration-300 hover:shadow-md"
+          class="group block linear-card p-6 hover:bg-muted transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-primary/20"
         >
           <div class="flex items-center gap-4">
             <div v-if="nextProject.thumbnail" class="flex-shrink-0 hidden sm:block">
               <NuxtImg
                 :src="nextProject.thumbnail"
                 :alt="nextProject.title"
-                class="w-16 h-16 rounded-lg object-cover"
+                class="w-16 h-16 rounded-lg object-cover transition-all duration-300 group-hover:shadow-md group-hover:brightness-110"
                 loading="lazy"
                 format="webp"
                 quality="75"
@@ -78,10 +78,10 @@ const nextProject = computed(() => props.surround[1])
             </div>
             <div class="min-w-0 flex-1 text-right">
               <p class="text-sm text-muted font-medium mb-1">Next Project</p>
-              <h3 class="text-lg font-semibold text-highlighted group-hover:text-primary transition-colors line-clamp-1">
+              <h3 class="text-lg font-semibold text-highlighted group-hover:text-primary transition-all duration-300 line-clamp-1">
                 {{ nextProject.title }}
               </h3>
-              <p v-if="nextProject.description" class="text-sm text-toned line-clamp-1 mt-1">
+              <p v-if="nextProject.description" class="text-sm text-toned group-hover:text-highlighted transition-all duration-300 line-clamp-1 mt-1">
                 {{ nextProject.description }}
               </p>
             </div>
@@ -89,7 +89,7 @@ const nextProject = computed(() => props.surround[1])
               <UIcon 
                 name="mingcute:arrow-right-fill" 
                 size="1.25em"
-                class="text-muted group-hover:text-primary transition-colors"
+                class="text-muted group-hover:text-primary transition-all duration-300 group-hover:transform group-hover:translate-x-1"
               />
             </div>
           </div>

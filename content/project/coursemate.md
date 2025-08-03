@@ -10,7 +10,7 @@ date: 2013-10-01
 ---
 ![Course Mate](/coursemate.png)
 
-::tip
+::tip{title="HIGHLIGHTS"}
 - Course Mate won the national championship award in 2013.
 - The app was bought by a Bangladeshi app market company [EATL](http://eatlapps.com).
 ::

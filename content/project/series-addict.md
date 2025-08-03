@@ -10,7 +10,7 @@ date: 2020-10-01
 ---
 ![Series Addict](/series-addict.png)
 
-::tip
+::tip{title="HIGHLIGHTS"}
 - Series Addict has over 100,000 installs.
 - The app has in app subscriptions, used by hundreds of users around the world.
 ::

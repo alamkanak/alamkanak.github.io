@@ -10,7 +10,7 @@ date: 2018-01-01
 ---
 ![An image](/finance-bd.png)
 
-::tip
+::tip{title="HIGHLIGHTS"}
 - Finance BD won the National Mobile Application App Award in Bangladesh
 - The app was one of the most popular finance app in Bangladesh
 ::

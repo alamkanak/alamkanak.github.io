@@ -10,7 +10,7 @@ date: 2017-01-01
 ---
 ![An image](/android-empty.png)
 
-::tip
+::tip{title="HIGHLIGHTS"}
 The library has over 600 stars on Github.
 ::
 

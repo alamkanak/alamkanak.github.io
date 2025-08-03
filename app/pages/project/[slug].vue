@@ -6,7 +6,7 @@ const { data } = await useAsyncData(route.path, () => Promise.all([
   queryCollection('project').path(`/project/${slug}`).first(),
   queryCollectionItemSurroundings('project', `/project/${slug}`, {
     fields: ['title', 'description', 'thumbnail'],
-  }),
+  }).order('date', 'DESC'),
 ]), {
   transform: ([page, surround]) => ({ page, surround }),
 })
@@ -29,6 +29,7 @@ useSeoMeta({
 })
 
 const formattedDate = computed(() => {
+  if (!page.value) return ''
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',

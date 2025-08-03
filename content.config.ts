@@ -14,7 +14,7 @@ export default defineContentConfig({
         links: z.array(z.object({
           url: z.string(),
           text: z.string(),
-          icon: z.array(z.string()).optional()
+          icon: z.string()
         })).optional(),
         info: z.array(z.object({
           key: z.string(),

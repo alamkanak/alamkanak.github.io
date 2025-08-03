@@ -103,7 +103,7 @@ date: 2024-01-01
 links:
   - url: https://github.com/example
     text: View on GitHub
-    icon: ['fab', 'github']
+    icon: mdi:github
 ---
 ```
 
