@@ -12,6 +12,18 @@ export default defineNuxtConfig({
     '@nuxt/icon'
   ],
   css: ['~/assets/css/main.css'],
+  image: {
+    // Configure for static generation
+    provider: 'ipx',
+    presets: {
+      avatar: {
+        modifiers: {
+          format: 'webp',
+          quality: 80
+        }
+      }
+    }
+  },
   ui: {
     theme: {
       colors: [

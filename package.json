@@ -6,7 +6,7 @@
     "build": "nuxt build",
     "build:github-pages": "nuxt build --preset github_pages",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "npx nuxi generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
