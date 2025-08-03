@@ -13,8 +13,8 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/css/main.css'],
   image: {
-    // Configure for static site generation
-    provider: 'ipxStatic',
+    // Use static provider for GitHub Pages
+    provider: 'static',
     presets: {
       avatar: {
         modifiers: {
@@ -59,10 +59,8 @@ export default defineNuxtConfig({
   },
   // Configure for GitHub Pages deployment
   app: {
-    // Base URL for GitHub Pages (if not using custom domain)
-    // Uncomment and modify if your GitHub Pages URL is https://alamkanak.github.io/repository-name/
-    // baseURL: '/repository-name/',
-    
+    // Base URL for GitHub Pages root (no subfolder)
+    baseURL: '/',
     head: {
       // Ensure proper meta tags for GitHub Pages
       meta: [
