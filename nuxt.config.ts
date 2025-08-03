@@ -37,9 +37,32 @@ export default defineNuxtConfig({
     ]
   },
   nitro: {
-    // Prerender routes for static generation
+    // Configure for static site generation and GitHub Pages
     prerender: {
-      routes: ['/']
+      routes: ['/'],
+      crawlLinks: true
     }
+  },
+  // Configure for GitHub Pages deployment
+  app: {
+    // Base URL for GitHub Pages (if not using custom domain)
+    // Uncomment and modify if your GitHub Pages URL is https://alamkanak.github.io/repository-name/
+    // baseURL: '/repository-name/',
+    
+    head: {
+      // Ensure proper meta tags for GitHub Pages
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'format-detection', content: 'telephone=no' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
+  },
+  // Ensure static generation compatibility
+  experimental: {
+    payloadExtraction: false
   }
 })

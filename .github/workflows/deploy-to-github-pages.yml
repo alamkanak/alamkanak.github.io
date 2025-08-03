@@ -1,0 +1,77 @@
+name: Deploy Portfolio to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["master"]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "portfolio-deployment"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout portfolio repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build and generate static site
+        run: yarn generate
+        env:
+          NODE_ENV: production
+
+      - name: Checkout GitHub Pages repository
+        uses: actions/checkout@v4
+        with:
+          repository: alamkanak/alamkanak.github.io
+          token: ${{ secrets.GH_PAGES_TOKEN }}
+          path: gh-pages-repo
+          fetch-depth: 0
+
+      - name: Clean GitHub Pages repository
+        run: |
+          cd gh-pages-repo
+          # Keep .git directory and README.md, remove everything else
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' ! -name 'README.md' -exec rm -rf {} +
+
+      - name: Copy generated files to GitHub Pages repository
+        run: |
+          # Copy all files from .output/public to gh-pages-repo
+          cp -r .output/public/* gh-pages-repo/
+          cd gh-pages-repo
+          
+          # Configure git user (GitHub Actions bot)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy to GitHub Pages repository
+        run: |
+          cd gh-pages-repo
+          
+          # Check if there are any changes
+          if [[ -n $(git status --porcelain) ]]; then
+            git add .
+            git commit -m "Deploy portfolio site - $(date -u '+%Y-%m-%d %H:%M:%S UTC')" \
+                       -m "Source: ${{ github.repository }}@${{ github.sha }}" \
+                       -m "Workflow: ${{ github.workflow }} #${{ github.run_number }}"
+            git push
+            echo "✅ Successfully deployed to GitHub Pages"
+          else
+            echo "ℹ️ No changes to deploy"
+          fi
