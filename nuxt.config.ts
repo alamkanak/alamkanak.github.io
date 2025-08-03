@@ -55,10 +55,30 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/'],
       crawlLinks: true
-    },
-    // GitHub Pages specific configuration
-    output: {
-      publicDir: process.env.NUXT_APP_BUILD_ASSETS_DIR || '_nuxt'
+    }
+  },
+  hooks: {
+    async 'nitro:config'(nitroConfig) {
+      if (nitroConfig.prerender?.routes) {
+        // Dynamically add all project routes for prerendering
+        try {
+          // This will work during build time when content is available
+          const fs = await import('fs')
+          const path = await import('path')
+          
+          const contentDir = path.resolve('./content/project')
+          if (fs.existsSync(contentDir)) {
+            const files = fs.readdirSync(contentDir)
+            const projectRoutes = files
+              .filter(file => file.endsWith('.md'))
+              .map(file => `/project/${file.replace('.md', '')}`)
+            
+            nitroConfig.prerender.routes.push(...projectRoutes)
+          }
+        } catch (error) {
+          console.warn('Could not auto-generate project routes:', error)
+        }
+      }
     }
   },
   // GitHub Pages deployment configuration
