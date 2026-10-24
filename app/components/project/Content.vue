@@ -23,52 +23,47 @@ defineProps<Props>()
   line-height: 1.75;
 }
 
-/* Headers */
-.project-content h1 {
-  font-size: 1.875rem;
-  font-weight: 700;
+/* A shared heading hierarchy for every project, including linked headings. */
+.project-content :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-sans);
   color: var(--ui-text-highlighted);
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  scroll-margin-top: var(--spacing-6xl);
+  margin-bottom: var(--spacing-lg);
 }
 
-.project-content h1:first-child {
-  margin-top: 0;
+.project-content h1 {
+  font-size: clamp(1.75rem, 1.5rem + 0.8vw, 2rem);
+  font-weight: 700;
+  margin-top: var(--spacing-5xl);
 }
 
 .project-content h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--ui-text-highlighted);
-  margin-top: 2.5rem;
-  margin-bottom: 1.25rem;
-}
-
-.project-content h2:first-child {
-  margin-top: 0;
+  font-size: clamp(1.375rem, 1.2rem + 0.5vw, 1.625rem);
+  margin-top: var(--spacing-5xl);
 }
 
 .project-content h3 {
   font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--ui-text-highlighted);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.project-content h3:first-child {
-  margin-top: 0;
+  margin-top: var(--spacing-4xl);
 }
 
 .project-content h4 {
   font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--ui-text-highlighted);
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: var(--spacing-3xl);
+  margin-bottom: var(--spacing-md);
 }
 
-.project-content h4:first-child {
+.project-content :is(h5, h6) {
+  font-size: 1rem;
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-content :is(h1, h2, h3, h4, h5, h6):first-child {
   margin-top: 0;
 }
 
@@ -156,6 +151,26 @@ defineProps<Props>()
 .project-content a:hover {
   opacity: 1;
   text-decoration-color: var(--ui-primary);
+}
+
+/* Heading permalinks read as headings, with a clear keyboard focus state. */
+.project-content :is(h1, h2, h3, h4, h5, h6) a {
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-decoration: none;
+  opacity: 1;
+  border-radius: var(--radius-xs);
+}
+
+.project-content :is(h1, h2, h3, h4, h5, h6) a:hover {
+  color: var(--ui-text);
+  text-decoration: none;
+}
+
+.project-content :is(h1, h2, h3, h4, h5, h6) a:focus-visible {
+  outline: 2px solid var(--ui-primary);
+  outline-offset: var(--spacing-xs);
 }
 
 /* Images */
