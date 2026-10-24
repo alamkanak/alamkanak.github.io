@@ -3,6 +3,8 @@ tags:
     icon: carbon:machine-learning-model
   - label: Web Development
     icon: carbon:web-services-container
+  - label: iOS Development
+    icon: mdi:apple-ios
   - label: Android Development
     icon: material-symbols:android
   - label: UX Design
