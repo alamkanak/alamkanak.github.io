@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { serializeJsonLd, site } from '~~/shared/utils/site'
+
 const route = useRoute()
 const router = useRouter()
 const slug = route.params.slug as string
@@ -19,15 +21,54 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found' })
 }
 
-// SEO Meta
-useSeoMeta({
-  title: page.value.title,
-  description: page.value.description,
-  ogTitle: page.value.title,
-  ogDescription: page.value.description,
-  ogImage: page.value.thumbnail || '/avatar.jpg',
-  twitterCard: 'summary_large_image',
+const { canonical, image } = useSiteSeo({
+  title: () => `${page.value?.title} | ${site.name}`,
+  description: () => page.value?.description || site.description,
+  image: () => page.value?.thumbnail,
+  imageAlt: () => page.value?.title || site.imageAlt,
 })
+
+useHead(() => ({
+  script: [{
+    key: 'page-schema',
+    type: 'application/ld+json',
+    innerHTML: serializeJsonLd({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'WebPage',
+          '@id': `${canonical.value}#page`,
+          url: canonical.value,
+          name: page.value?.title,
+          description: page.value?.description,
+          inLanguage: page.value?.lang || 'en',
+          isPartOf: { '@id': `${site.url}#website` },
+          breadcrumb: { '@id': `${canonical.value}#breadcrumbs` },
+          mainEntity: { '@id': `${canonical.value}#project` },
+        },
+        {
+          '@type': 'CreativeWork',
+          '@id': `${canonical.value}#project`,
+          name: page.value?.title,
+          description: page.value?.description,
+          url: canonical.value,
+          image: image.value,
+          dateCreated: page.value?.date,
+          keywords: page.value?.tags,
+          creator: { '@type': 'Person', '@id': `${site.url}#person`, name: site.name, url: site.url },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': `${canonical.value}#breadcrumbs`,
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Portfolio', item: site.url },
+            { '@type': 'ListItem', position: 2, name: page.value?.title, item: canonical.value },
+          ],
+        },
+      ],
+    }),
+  }],
+}))
 
 // Back navigation function that preserves scroll position
 const goBack = () => {

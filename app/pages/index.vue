@@ -17,64 +17,53 @@
 </template>
 
 <script setup lang="ts">
-// Fetch profile data from Nuxt Content using shared composable
-const { data: profileData } = useProfile()
+import { serializeJsonLd, site, siteUrl } from '~~/shared/utils/site'
 
-// SEO Meta
-useHead({
-  title: profileData.value?.seo?.title || '',
-  meta: [
-    {
-      name: 'description',
-      content: profileData.value?.seo?.description || ''
-    },
-    {
-      name: 'keywords',
-      content: profileData.value?.seo?.keywords || ''
-    },
-    {
-      property: 'og:title',
-      content: profileData.value?.seo?.title || ''
-    },
-    {
-      property: 'og:description',
-      content: profileData.value?.seo?.description || ''
-    },
-    {
-      property: 'og:type',
-      content: 'website'
-    },
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image'
-    },
-    {
-      name: 'twitter:title',
-      content: profileData.value?.seo?.title || ''
-    },
-    {
-      name: 'twitter:description',
-      content: profileData.value?.seo?.description || ''
-    }
-  ]
+const { data: profileData } = await useProfile()
+
+useSiteSeo({
+  title: () => profileData.value?.seo.title || site.title,
+  description: () => profileData.value?.seo.description || site.description,
 })
 
-// Add structured data to head
-useHead({
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: profileData.value?.name || '',
-        jobTitle: profileData.value?.seo?.jobTitle || '',
-        description: profileData.value?.seo?.description || '',
-        url: profileData.value?.seo?.url || 'https://alamkanak.github.io',
-        sameAs: profileData.value?.social?.map(s => s.url) || [],
-        knowsAbout: profileData.value?.expertise || []
-      })
-    }
-  ]
-})
+useHead(() => ({
+  script: [{
+    key: 'page-schema',
+    type: 'application/ld+json',
+    innerHTML: serializeJsonLd({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'WebSite',
+          '@id': `${site.url}#website`,
+          url: site.url,
+          name: site.name,
+          inLanguage: 'en',
+          publisher: { '@id': `${site.url}#person` },
+        },
+        {
+          '@type': 'Person',
+          '@id': `${site.url}#person`,
+          name: profileData.value?.name || site.name,
+          jobTitle: profileData.value?.seo.jobTitle,
+          description: profileData.value?.seo.description || site.description,
+          url: site.url,
+          image: siteUrl(profileData.value?.avatar.src || '/avatar.jpg'),
+          sameAs: profileData.value?.social.filter(link => link.url.startsWith('https://')).map(link => link.url),
+          knowsAbout: profileData.value?.expertise,
+        },
+        {
+          '@type': 'ProfilePage',
+          '@id': `${site.url}#page`,
+          url: site.url,
+          name: profileData.value?.seo.title || site.title,
+          description: profileData.value?.seo.description || site.description,
+          inLanguage: 'en',
+          isPartOf: { '@id': `${site.url}#website` },
+          mainEntity: { '@id': `${site.url}#person` },
+        },
+      ],
+    }),
+  }],
+}))
 </script>
